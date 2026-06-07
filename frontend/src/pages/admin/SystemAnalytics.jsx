@@ -24,7 +24,6 @@ import {
 import { getErrorMessage } from "../../api/axios";
 import { getSystemAnalytics } from "../../api/dashboardApi";
 import Loader from "../../components/common/Loader";
-import PageHeader from "../../components/common/PageHeader";
 
 const RISK_COLORS = {
   Low: "#16a34a",
@@ -49,11 +48,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 
       {payload.map((item) => (
         <p key={item.dataKey || item.name}>
-          <span
-            style={{
-              background: item.color || item.fill
-            }}
-          />
+          <span style={{ background: item.color || item.fill }} />
           {item.name}: <strong>{item.value}</strong>
         </p>
       ))}
@@ -63,14 +58,25 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const RiskLegend = ({ data = [] }) => {
   return (
-    <div className="risk-legend">
+    <div className="risk-legend premium-risk-legend">
       {data.map((item) => (
-        <div className="risk-legend-item" key={item.name}>
+        <div className="risk-legend-item premium-risk-item" key={item.name}>
           <span style={{ background: RISK_COLORS[item.name] }} />
-          <p>{item.name}</p>
-          <strong>{item.value}</strong>
+          <div>
+            <p>{item.name}</p>
+            <strong>{item.value}</strong>
+          </div>
         </div>
       ))}
+    </div>
+  );
+};
+
+const DonutCenterLabel = ({ title, total }) => {
+  return (
+    <div className="donut-center-label">
+      <h2>{total}</h2>
+      <p>{title}</p>
     </div>
   );
 };
@@ -166,7 +172,7 @@ const SystemAnalytics = () => {
 
   return (
     <div className="analytics-page">
-      <section className="analytics-hero">
+      <section className="analytics-hero compact-analytics-hero">
         <div>
           <p className="analytics-kicker">
             <Sparkles size={16} />
@@ -181,14 +187,12 @@ const SystemAnalytics = () => {
           </p>
         </div>
 
-        <div className="analytics-hero-card">
-          <div className="analytics-hero-icon">
-            <TrendingUp size={30} />
+        <div className="analytics-hero-mini-card">
+          <TrendingUp size={22} />
+          <div>
+            <h2>{totals.totalSubmissions}</h2>
+            <p>Total Submissions</p>
           </div>
-
-          <h2>{totals.totalSubmissions}</h2>
-          <p>Total Submissions</p>
-          <span>Across all departments</span>
         </div>
       </section>
 
@@ -197,7 +201,7 @@ const SystemAnalytics = () => {
       <div className="analytics-stat-grid">
         <div className="analytics-stat-card">
           <div className="analytics-stat-icon">
-            <Building2 size={24} />
+            <Building2 size={23} />
           </div>
           <div>
             <p>Total Students</p>
@@ -208,7 +212,7 @@ const SystemAnalytics = () => {
 
         <div className="analytics-stat-card">
           <div className="analytics-stat-icon cyan">
-            <FileCheck size={24} />
+            <FileCheck size={23} />
           </div>
           <div>
             <p>Assignments</p>
@@ -219,7 +223,7 @@ const SystemAnalytics = () => {
 
         <div className="analytics-stat-card">
           <div className="analytics-stat-icon pink">
-            <ShieldCheck size={24} />
+            <ShieldCheck size={23} />
           </div>
           <div>
             <p>Plagiarism Reports</p>
@@ -230,7 +234,7 @@ const SystemAnalytics = () => {
 
         <div className="analytics-stat-card">
           <div className="analytics-stat-icon purple">
-            <Brain size={24} />
+            <Brain size={23} />
           </div>
           <div>
             <p>AI Reports</p>
@@ -240,8 +244,8 @@ const SystemAnalytics = () => {
         </div>
       </div>
 
-      <div className="analytics-chart-grid">
-        <div className="premium-chart-card">
+      <div className="analytics-chart-grid premium-analytics-chart-grid">
+        <div className="premium-chart-card analytics-donut-card">
           <div className="chart-title-row">
             <div>
               <p>Risk Distribution</p>
@@ -254,17 +258,17 @@ const SystemAnalytics = () => {
             </div>
           </div>
 
-          <div className="donut-chart-wrap">
-            <ResponsiveContainer width="100%" height={270}>
+          <div className="donut-chart-wrap premium-donut-wrap">
+            <ResponsiveContainer width="100%" height={230}>
               <PieChart>
                 <Pie
                   data={plagiarismData}
                   dataKey="value"
                   nameKey="name"
-                  innerRadius={62}
-                  outerRadius={94}
-                  paddingAngle={5}
-                  label
+                  innerRadius={58}
+                  outerRadius={88}
+                  paddingAngle={4}
+                  stroke="none"
                 >
                   {plagiarismData.map((entry) => (
                     <Cell key={entry.name} fill={RISK_COLORS[entry.name]} />
@@ -273,12 +277,17 @@ const SystemAnalytics = () => {
                 <Tooltip content={<CustomTooltip />} />
               </PieChart>
             </ResponsiveContainer>
+
+            <DonutCenterLabel
+              title="Reports"
+              total={totals.totalPlagiarism}
+            />
           </div>
 
           <RiskLegend data={plagiarismData} />
         </div>
 
-        <div className="premium-chart-card">
+        <div className="premium-chart-card analytics-donut-card">
           <div className="chart-title-row">
             <div>
               <p>Risk Distribution</p>
@@ -291,17 +300,17 @@ const SystemAnalytics = () => {
             </div>
           </div>
 
-          <div className="donut-chart-wrap">
-            <ResponsiveContainer width="100%" height={270}>
+          <div className="donut-chart-wrap premium-donut-wrap">
+            <ResponsiveContainer width="100%" height={230}>
               <PieChart>
                 <Pie
                   data={aiData}
                   dataKey="value"
                   nameKey="name"
-                  innerRadius={62}
-                  outerRadius={94}
-                  paddingAngle={5}
-                  label
+                  innerRadius={58}
+                  outerRadius={88}
+                  paddingAngle={4}
+                  stroke="none"
                 >
                   {aiData.map((entry) => (
                     <Cell key={entry.name} fill={RISK_COLORS[entry.name]} />
@@ -310,13 +319,15 @@ const SystemAnalytics = () => {
                 <Tooltip content={<CustomTooltip />} />
               </PieChart>
             </ResponsiveContainer>
+
+            <DonutCenterLabel title="Reports" total={totals.totalAI} />
           </div>
 
           <RiskLegend data={aiData} />
         </div>
       </div>
 
-      <div className="premium-chart-card full-chart-card">
+      <div className="premium-chart-card full-chart-card analytics-bar-card">
         <div className="chart-title-row">
           <div>
             <p>Department Overview</p>
@@ -330,24 +341,27 @@ const SystemAnalytics = () => {
         </div>
 
         {departmentData.length ? (
-          <ResponsiveContainer width="100%" height={360}>
+          <ResponsiveContainer width="100%" height={340}>
             <BarChart data={departmentData} barGap={8}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="name" />
               <YAxis allowDecimals={false} />
               <Tooltip content={<CustomTooltip />} />
+
               <Bar
                 dataKey="students"
                 name="Students"
                 fill={BAR_COLORS.students}
                 radius={[8, 8, 0, 0]}
               />
+
               <Bar
                 dataKey="assignments"
                 name="Assignments"
                 fill={BAR_COLORS.assignments}
                 radius={[8, 8, 0, 0]}
               />
+
               <Bar
                 dataKey="submissions"
                 name="Submissions"
@@ -360,7 +374,10 @@ const SystemAnalytics = () => {
           <div className="analytics-empty-chart">
             <BarChart3 size={42} />
             <h3>No department activity yet</h3>
-            <p>Charts will update automatically after assignments and submissions.</p>
+            <p>
+              Charts will update automatically after assignments and
+              submissions.
+            </p>
           </div>
         )}
       </div>
