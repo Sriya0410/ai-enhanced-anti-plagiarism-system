@@ -19,6 +19,7 @@ const seedAdmin = require("./adminSeeder");
 const seedDepartments = require("./departmentSeeder");
 const seedTeachers = require("./teacherSeeder");
 const seedSubjects = require("./subjectSeeder");
+const seedStudents = require("./studentSeeder");
 
 dotenv.config();
 
@@ -49,22 +50,26 @@ const seedSettings = async () => {
     {
       key: "plagiarismHighThreshold",
       value: 70,
-      description: "Submissions with plagiarism score greater than or equal to this value are marked HIGH."
+      description:
+        "Submissions with plagiarism score greater than or equal to this value are marked HIGH."
     },
     {
       key: "plagiarismMediumThreshold",
       value: 35,
-      description: "Submissions with plagiarism score greater than or equal to this value are marked MEDIUM."
+      description:
+        "Submissions with plagiarism score greater than or equal to this value are marked MEDIUM."
     },
     {
       key: "aiHighThreshold",
       value: 70,
-      description: "Submissions with AI score greater than or equal to this value are marked HIGH."
+      description:
+        "Submissions with AI score greater than or equal to this value are marked HIGH."
     },
     {
       key: "aiMediumThreshold",
       value: 35,
-      description: "Submissions with AI score greater than or equal to this value are marked MEDIUM."
+      description:
+        "Submissions with AI score greater than or equal to this value are marked MEDIUM."
     },
     {
       key: "allowedFileTypes",
@@ -89,17 +94,25 @@ const runSeeder = async () => {
     await seedDepartments();
     await seedTeachers();
     await seedSubjects();
+    await seedStudents();
     await seedSettings();
 
     console.log("Full database seeding completed successfully.");
     console.log("----------------------------------------");
+
     console.log("Admin Login:");
     console.log("Email: admin@gmail.com");
     console.log("Password: Admin@123");
     console.log("----------------------------------------");
+
     console.log("Teacher Login Example:");
     console.log("Email: anil.cse@college.edu");
     console.log("Password: Teacher@123");
+    console.log("----------------------------------------");
+
+    console.log("Student Login Example:");
+    console.log("Email: rahul.cse@college.edu");
+    console.log("Password: Student@123");
     console.log("----------------------------------------");
 
     process.exit(0);
