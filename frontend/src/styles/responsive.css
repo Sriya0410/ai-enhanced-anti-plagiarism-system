@@ -1,0 +1,159 @@
+@media (max-width: 1180px) {
+  .dashboard-grid,
+  .assignment-grid,
+  .admin-highlight-grid,
+  .teacher-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .landing-hero,
+  .content-grid.two {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 920px) {
+  .dashboard-grid,
+  .assignment-grid,
+  .admin-highlight-grid,
+  .teacher-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .landing-hero {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 820px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .app-main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+  }
+
+  .top-navbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px 18px;
+  }
+
+  .top-navbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .page-header,
+  .details-title-row {
+    flex-direction: column;
+  }
+
+  .details-grid,
+  .form-grid.two,
+  .dashboard-grid,
+  .assignment-grid,
+  .hero-stats-grid,
+  .admin-highlight-grid,
+  .teacher-action-grid,
+  .content-grid.two {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .landing-actions,
+  .landing-hero-actions {
+    width: 100%;
+  }
+
+  .landing-actions a,
+  .landing-actions .btn,
+  .landing-hero-actions a,
+  .landing-hero-actions .btn {
+    width: 100%;
+  }
+
+  .app-content {
+    padding: 18px;
+  }
+
+  .modal-body {
+    padding: 18px;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-actions {
+    width: 100%;
+  }
+
+  .page-actions .btn,
+  .page-actions a {
+    width: 100%;
+  }
+
+  .profile-chip span,
+  .logout-button span {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  .auth-card,
+  .auth-card.wide {
+    padding: 23px;
+    border-radius: 24px;
+  }
+
+  .landing-page,
+  .auth-page {
+    padding: 18px;
+  }
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+  .top-navbar h2 {
+    font-size: 17px;
+  }
+
+  .panel-card,
+  .details-card,
+  .chart-card,
+  .profile-summary-card,
+  .form-card {
+    padding: 18px;
+  }
+
+  .data-table {
+    min-width: 820px;
+  }
+}
