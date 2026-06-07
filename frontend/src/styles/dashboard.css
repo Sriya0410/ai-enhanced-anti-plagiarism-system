@@ -690,11 +690,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-.analytics-donut-card {
-  min-height: 455px;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .chart-title-row {
   display: flex;
@@ -743,38 +739,8 @@
   color: #7c3aed;
 }
 
-.analytics-donut-wrap {
-  position: relative;
-  height: 230px;
-  margin-top: 8px;
-}
 
-.analytics-donut-center {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-}
 
-.analytics-donut-center h2 {
-  margin: 0;
-  color: var(--text);
-  font-size: 34px;
-  line-height: 1;
-  letter-spacing: -0.06em;
-  text-align: center;
-}
-
-.analytics-donut-center p {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-align: center;
-}
 
 .analytics-risk-legend {
   display: grid !important;
