@@ -900,3 +900,57 @@
     min-height: auto;
   }
 }
+
+/* ===============================
+   DONUT CENTER TEXT OVERLAP FIX
+   Paste at bottom of dashboard.css
+================================ */
+
+.analytics-donut-wrap {
+  position: relative !important;
+  height: 250px !important;
+  margin-top: 10px !important;
+}
+
+.analytics-donut-center {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  pointer-events: none !important;
+  transform: translateY(2px);
+}
+
+.analytics-donut-center h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--text) !important;
+  font-size: 36px !important;
+  font-weight: 950 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.06em !important;
+  text-align: center !important;
+}
+
+.analytics-donut-center p {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  font-weight: 950 !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.09em !important;
+  text-align: center !important;
+}
+
+.analytics-donut-card {
+  min-height: 470px !important;
+}
+
+.analytics-risk-legend {
+  margin-top: 18px !important;
+}
