@@ -58,10 +58,14 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const RiskLegend = ({ data = [] }) => {
   return (
-    <div className="risk-legend premium-risk-legend">
+    <div className="analytics-risk-legend">
       {data.map((item) => (
-        <div className="risk-legend-item premium-risk-item" key={item.name}>
-          <span style={{ background: RISK_COLORS[item.name] }} />
+        <div className="analytics-risk-item" key={item.name}>
+          <span
+            className="analytics-risk-dot"
+            style={{ background: RISK_COLORS[item.name] }}
+          />
+
           <div>
             <p>{item.name}</p>
             <strong>{item.value}</strong>
@@ -74,7 +78,7 @@ const RiskLegend = ({ data = [] }) => {
 
 const DonutCenterLabel = ({ title, total }) => {
   return (
-    <div className="donut-center-label">
+    <div className="analytics-donut-center">
       <h2>{total}</h2>
       <p>{title}</p>
     </div>
@@ -258,7 +262,7 @@ const SystemAnalytics = () => {
             </div>
           </div>
 
-          <div className="donut-chart-wrap premium-donut-wrap">
+          <div className="analytics-donut-wrap">
             <ResponsiveContainer width="100%" height={230}>
               <PieChart>
                 <Pie
@@ -278,10 +282,7 @@ const SystemAnalytics = () => {
               </PieChart>
             </ResponsiveContainer>
 
-            <DonutCenterLabel
-              title="Reports"
-              total={totals.totalPlagiarism}
-            />
+            <DonutCenterLabel title="Reports" total={totals.totalPlagiarism} />
           </div>
 
           <RiskLegend data={plagiarismData} />
@@ -300,7 +301,7 @@ const SystemAnalytics = () => {
             </div>
           </div>
 
-          <div className="donut-chart-wrap premium-donut-wrap">
+          <div className="analytics-donut-wrap">
             <ResponsiveContainer width="100%" height={230}>
               <PieChart>
                 <Pie
